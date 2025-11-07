@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analyzer - AI-Powered Text Analysis</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="animated-bg">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Sentiment Analyzer</h1>
+            <p class="subtitle">AI-Powered Emotion Detection for Text, Tweets & Reviews</p>
+        </header>
+
+        <div class="main-grid">
+            <div class="card">
+                <h2 class="card-title">
+                    <span class="icon">✍️</span>
+                    Input Text
+                </h2>
+                <textarea id="textInput" placeholder="Enter your text, tweet, or review here...&#x0a;&#x0a;Example:&#x0a;'This product exceeded my expectations! Amazing quality!'&#x0a;'The service was okay, nothing special.'&#x0a;'Terrible experience, would not recommend.'"></textarea>
+                <div class="button-group">
+                    <button class="btn-primary" onclick="analyzeSentiment()">Analyze Sentiment</button>
+                    <button class="btn-secondary" onclick="clearInput()">Clear</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">
+                    <span class="icon">📊</span>
+                    Results
+                </h2>
+                
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Analyzing sentiment...</p>
+                </div>
+
+                <div id="emptyState" style="text-align: center; padding: 3rem 1rem; color: var(--text-muted);">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">🤖</div>
+                    <p>Enter some text and click "Analyze Sentiment" to see the results</p>
+                </div>
+
+                <div class="result-container" id="resultContainer">
+                    <div class="sentiment-display" id="sentimentDisplay">
+                        <div class="sentiment-emoji" id="sentimentEmoji">😊</div>
+                        <div class="sentiment-label" id="sentimentLabel">POSITIVE</div>
+                        <div class="sentiment-confidence" id="sentimentConfidence">Confidence: 95%</div>
+                    </div>
+
+                    <div class="analysis-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Positive Score</span>
+                            <span class="detail-value" id="positiveScore">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill positive" id="positiveBar" style="width: 0%"></div>
+                        </div>
+
+                        <div class="detail-row">
+                            <span class="detail-label">Neutral Score</span>
+                            <span class="detail-value" id="neutralScore">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill neutral" id="neutralBar" style="width: 0%"></div>
+                        </div>
+
+                        <div class="detail-row">
+                            <span class="detail-label">Negative Score</span>
+                            <span class="detail-value" id="negativeScore">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill negative" id="negativeBar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="grid-column: 1 / -1;">
+                <h2 class="card-title">
+                    <span class="icon">📈</span>
+                    Statistics
+                </h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" style="color: var(--positive);" id="totalPositive">0</div>
+                        <div class="stat-label">Positive</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" style="color: var(--neutral);" id="totalNeutral">0</div>
+                        <div class="stat-label">Neutral</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" style="color: var(--negative);" id="totalNegative">0</div>
+                        <div class="stat-label">Negative</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card history-section">
+                <h2 class="card-title">
+                    <span class="icon">📜</span>
+                    Analysis History
+                </h2>
+                <div class="history-list" id="historyList">
+                    <div style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                        No analysis history yet
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
